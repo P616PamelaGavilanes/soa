@@ -1,38 +1,250 @@
-.App {
+/*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+
+.fade-carousel .carousel-inner .item {
+    height: 50vh;
+
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  height: 10px;
+  opacity: 1;
+}
+
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+
+}
+
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .2;
+    
+}
+
+/********************************/
+/*          Custom Buttons      */
+/********************************/
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+    color: #f5f5f5;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    outline: none;
+    margin: 20px auto;
+}
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1{
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url(https://ununsplash.imgix.net/photo-1416339134316-0e91dc9ded92?q=75&fm=jpg&s=883a422e10fc4149893984019f63c818); 
+}
+.hola{
+  font-family: 'Teko', sans-serif;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #3a6186 , #ac8c94); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;    
+  }
+.hola .opcion{
   text-align: center;
+    font-size: 3em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*Now the styles*/
+* {
+  margin: 0; 
+padding: 0;
+}
+body {
+background: #ccc; 
+font-family: arial, verdana, tahoma;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*Time to apply widths for accordian to work
+Width of image = 640px
+total images = 5
+so width of hovered image = 640px
+width of un-hovered image = 40px - you can set this to anything
+so total container width = 640 + 40*4 = 800px;
+default width = 800/5 = 160px;
+*/
+
+.accordian {
+width: 805px; height: 320px;
+overflow: hidden;
+
+/*Time for some styling*/
+margin: 20px auto ;/*ubicacion=margin: 20px auto*/
+box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/*A small hack to prevent flickering on some browsers*/
+.accordian ul {
+width: 1200px;
+/*This will give ample space to the last item to move
+instead of falling down/flickering during hovers.*/
 }
 
-.App-link {
-  color: #61dafb;
+.accordian li {
+position: relative;
+display: block;
+width: 160px;
+float: left;
+
+border-left: 1px solid #888;
+
+box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+-webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+-moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+
+/*Transitions to give animation effect*/
+transition: all 0.5s;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+/*If you hover on the images now you should be able to 
+see the basic accordian*/
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*Reduce with of un-hovered elements*/
+.accordian ul:hover li {width: 40px;}
+/*Lets apply hover effects now*/
+/*The LI hover style should override the UL hover style*/
+.accordian ul li:hover {width: 640px;}
+
+
+.accordian li img {
+display: block;
+position: relative;
+text-align:center;
+height: 300px;
+margin: auto;
+width: auto;
+
+}
+
+
+/*Image title styles*/
+.image_title {
+background: rgba(0, 0, 0, 0.5);
+position: center;
+left: 0; bottom: 0;	
+width: 640px;	
+
+}
+.image_title button {
+display: block;
+color: #fff;
+text-decoration: none;
+padding: 20px;
+font-size: 16px;
+background-color: rgba(0, 0, 0, 0);
+
+}
+
+.botonelec{
+  background-color: rgba(0, 0, 0, 0);
+}
+.panel-table .panel-body{
+  padding:0;
+}
+
+.panel-table .panel-body .table-bordered{
+  border-style: none;
+  margin:0;
+}
+
+.panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
+    text-align:center;
+    width: 100px;
+}
+
+.panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
+.panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
+  border-right: 0px;
+}
+
+.panel-table .panel-body .table-bordered > thead > tr > th:first-of-type,
+.panel-table .panel-body .table-bordered > tbody > tr > td:first-of-type {
+  border-left: 0px;
+}
+
+.panel-table .panel-body .table-bordered > tbody > tr:first-of-type > td{
+  border-bottom: 0px;
+}
+
+.panel-table .panel-body .table-bordered > thead > tr:first-of-type > th{
+  border-top: 0px;
+}
+
+.panel-table .panel-footer .pagination{
+  margin:0; 
+}
+
+/*
+used to vertically center elements, may need modification if you're not using default sizes.
+*/
+.panel-table .panel-footer .col{
+ line-height: 34px;
+ height: 34px;
+}
+
+.panel-table .panel-heading .col h3{
+ line-height: 30px;
+ height: 30px;
+}
+
+.panel-table .panel-body .table-bordered > tbody > tr > td{
+  line-height: 34px;
 }
